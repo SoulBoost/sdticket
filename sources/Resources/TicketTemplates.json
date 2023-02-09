@@ -1,0 +1,93 @@
+{
+  "Выдать/заменить оборудование": {
+                                  "ticket_type": 1,
+                                  "help_info": "Выберите нужное оборудование",
+                                  "subselection": ["Ноутбук", "Мышь", "Клавиатура",
+                                                   "Гарнитура", "Жёсткий диск", "Прочее"],
+                                  "comment_len": 5,
+                                  "related_method": "send",
+                                  "help_info2": "",
+                                  "comment_len2": 0
+  },
+  "Заменить катридж в принтере": {
+                                  "ticket_type": 2,
+                                  "help_info": "Напишите имя принтера. На принтер приклеен стикер с именем.",
+                                  "subselection": [""],
+                                  "comment_len": 5,
+                                  "related_method": "send",
+                                  "help_info2": "",
+                                  "comment_len2": 0
+  },
+  "Исправить проблему с компьютером": {
+                                  "ticket_type": 2,
+                                  "help_info": "Какая проблема у вас возникает?",
+                                  "subselection": [""],
+                                  "comment_len": 5,
+                                  "related_method": "send",
+                                  "help_info2": "",
+                                  "comment_len2": 0
+  },
+  "Исправить проблему с принтером": {
+                                  "ticket_type": 4,
+                                  "help_info": "Напишите имя принтера. На принтер приклеен стикер с именем.",
+                                  "subselection": [""],
+                                  "comment_len": 5,
+                                  "related_method": "send",
+                                  "help_info2": "Какая проблема у вас возникает?",
+                                  "comment_len2": 7
+  },
+  "Исправить проблему при выходе в интернет": {
+                                  "ticket_type": 2,
+                                  "help_info": "Какая проблема у вас возникает?",
+                                  "subselection": [""],
+                                  "comment_len": 5,
+                                  "related_method": "send",
+                                  "help_info2": "",
+                                  "comment_len2": 0
+  },
+  "Настроить/исправить почту на компьютере/телефоне": {
+                                  "ticket_type": 0,
+                                  "help_info": "",
+                                  "subselection": [""],
+                                  "comment_len": 0,
+                                  "related_method": "send",
+                                  "help_info2": "",
+                                  "comment_len2": 0
+  },
+  "Предоставить доступ к диску B": {
+                                  "ticket_type": 3,
+                                  "help_info": "",
+                                  "subselection": [""],
+                                  "comment_len": 30,
+                                  "related_method": "connect_B",
+                                  "help_info2": "",
+                                  "comment_len2": 0
+  },
+  "Почистить кэш": {
+                                  "ticket_type": 3,
+                                  "help_info": "",
+                                  "subselection": [""],
+                                  "comment_len": 0,
+                                  "related_method": "clean_temp",
+                                  "help_info2": "",
+                                  "comment_len2": 0
+  },
+  "Разблокировать файл на диске B": {
+                                  "ticket_type": 2,
+                                  "help_info": "Укажите путь до файла",
+                                  "subselection": [""],
+                                  "comment_len": 5,
+                                  "related_method": "send",
+                                  "help_info2": "",
+                                  "comment_len2": 0
+  },
+  "Установить программу": {
+                                  "ticket_type": 2,
+                                  "help_info": "Введите нужную программу",
+                                  "subselection": [""],
+                                  "comment_len": 5,
+                                  "related_method": "send",
+                                  "help_info2": "",
+                                  "comment_len2": 0
+  }
+}
