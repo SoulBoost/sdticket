@@ -77,7 +77,7 @@ class MainWindow(MainWindowV):
         else:
             self.button_send.setDisabled(True)
 
-    # когда пользователь выбрал
+    # замена оборудования
     def comboBox_changed(self):
         if self.comboBox.currentText() == "Прочее":
             self.enable_text(THEMES[self.combo_theme.currentText()].get_help_info())
@@ -157,7 +157,6 @@ class MainWindow(MainWindowV):
         self.label_comment2.setText(text)
         self.text_comment2.setDisabled(False)
         self.text_comment2.setText('')
-        # self.text_changed2()
 
     # по клику на галочку активировать выбор ДЦ
     def enable_location(self):
@@ -172,6 +171,7 @@ class MainWindow(MainWindowV):
                 return 'connected'
             self.combo_location.setDisabled(False)
 
+    # содержит список всех дц
     def set_all_locations(self):
         for i in range(self.combo_location.count()):
             self.all_locations.append(self.combo_location.itemText(i))
@@ -296,10 +296,6 @@ class MainWindow(MainWindowV):
         if self.windowState() == QtCore.Qt.WindowMinimized:
             self.setWindowState(QtCore.Qt.WindowNoState)
         self.show()
-
-
-#    def hideEvent(self, event):
-#        self.tray_icon.showMessage("SD Ticket", "Чем я могу вам помочь?", QSystemTrayIcon.Information, 1)
 
 
 if __name__ == "__main__":

@@ -1,5 +1,6 @@
 import os
 
+
 def passage(file_name, folder):
     for element in os.scandir(folder):
         if element.is_file():

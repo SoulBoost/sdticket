@@ -16,18 +16,13 @@ class MainWindowV(QMainWindow, Ui_MainWindow):
 
     def view(self):
         self.setWindowIcon(QtGui.QIcon('Pictures/SD.ico'))
-
         self.combo_location.addItems(DSS)
-        # self.combo_theme.addItems(THEMES.keys())
-
         for key in THEMES.keys():
             self.combo_theme.addItem(THEMES[key].get_name())
-
         self.text_comment.setMaximumSize(1, 1)
         self.comboBox.setMaximumSize(1, 1)
         self.text_comment2.setMaximumSize(1, 1)
 
-        # self.text_comment.setPlaceholderText("Пожалуйста опишите свою проблему более детально")
         self.combo_location.setDisabled(True)
         self.button_send.setDisabled(True)
         self.text_comment.setDisabled(True)

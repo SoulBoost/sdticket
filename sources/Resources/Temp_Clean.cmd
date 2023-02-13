@@ -1,0 +1,7 @@
+DEL /F /S /Q "%USERPROFILE%\Local Settings\Temporary Internet Files\*"
+DEL /F /S /Q "%USERPROFILE%\Recent\*"
+DEL /F /S /Q "%WINDIR%\Temp\*"
+DEL /F /S /Q "%SYSTEMDRIVE%\Temp\*"
+DEL /F /S /Q "%TEMP%\*"
+DEL /F /S /Q "%LOCALAPPDATA%\Microsoft\Windows\Temporary Internet Files\*"
+rem DEL /F /S /Q "%LOCALAPPDATA%\Temp\*"
