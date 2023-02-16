@@ -60,7 +60,7 @@ class MainWindow(MainWindowV):
         self.check_manyally_location.setChecked(True)
         self.label_ip.setText('IP: ' + self.user.get_ip())
         self.label_pc_name.setText('Имя компьютера: ' + self.user.get_pc_name())
-        self.label_worktime.setText('Время работы ПК: часы, минуты')
+        self.label_worktime.setText(self.user.get_worktime())
         self.tray_icon.activated.connect(self.on_tray_activated)
         self.button_send.clicked.connect(self.button_route)
         self.check_manyally_location.toggled.connect(self.enable_location)
@@ -69,7 +69,9 @@ class MainWindow(MainWindowV):
         self.text_comment.textChanged.connect(self.text_changed)
         self.text_comment2.textChanged.connect(self.text_changed)
 
-    # активировать кнопку если есть комментарий
+    # активировать кнопку перезагрузки ПК, если он работает более 24 часов
+
+    # активировать кнопку если есть комментарий, который превышает 7 символов
     def text_changed(self):
         if (len(self.text_comment2.toPlainText()) >= THEMES[self.combo_theme.currentText()].get_comment_len2() and
                 len(self.text_comment.toPlainText()) >= THEMES[self.combo_theme.currentText()].get_comment_len()):
@@ -112,6 +114,10 @@ class MainWindow(MainWindowV):
             self.hide_text2()
             self.hide_comboBox()
             self.button_send.setDisabled(False)
+        elif THEMES[problem].get_ticket_type() == "default":
+            self.hide_comboBox()
+            self.button_send.setDisabled(True)
+
 
     # скрывает поле комбо бокс
     def hide_comboBox(self):
@@ -241,6 +247,7 @@ class MainWindow(MainWindowV):
         msg_no = msg.addButton("Нет", msg.NoRole)
         msg_yes = msg.addButton("Да", msg.YesRole)
 
+    #появление предупреждающего окна при смене ДЦ.
         def clicked_msg_yes():
             msg.ckicked_no = False
 
@@ -277,20 +284,10 @@ class MainWindow(MainWindowV):
                                                  "Я могу помочь вам чем-нибудь ещё?"):
             self.hide()
 
-    def keyPressEvent(self, event):
-        # print(event.key())
-        if event.key() == Qt.Key_Space:
-            event.key()
-        if event.key() == Qt.Key_B:
-            event.key()
-
+    #добавление иконки в трей
     def on_tray_activated(self, reason):
         if reason == self.tray_icon.DoubleClick:
             self.over_show()
-
-    def closeEvent(self, event):
-        event.ignore()
-        self.hide()
 
     def over_show(self):
         if self.windowState() == QtCore.Qt.WindowMinimized:

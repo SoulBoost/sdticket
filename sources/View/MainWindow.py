@@ -144,8 +144,14 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(12)
         self.label_worktime.setFont(font)
-        self.label_worktime.setText("asd")
         self.label_worktime.setObjectName("label_worktime")
+        self.label_worktime.setStyleSheet("color: rgb(255, 26, 41)")
+
+        self.relog_button = QtWidgets.QPushButton(self.centralwidget)
+        self.relog_button.setEnabled(True)
+        self.relog_button.setObjectName("relog_button")
+        self.verticalLayout_2.addWidget(self.relog_button, 0, QtCore.Qt.AlignLeft)
+
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -160,3 +166,4 @@ class Ui_MainWindow(object):
         self.label_theme.setText(_translate("MainWindow", "Тема"))
         self.button_send.setText(_translate("MainWindow", "Отправить"))
         self.label_worktime.setText(_translate("MainWindow", "Время работы пк:"))
+        self.relog_button.setText(_translate("MainWindow", "Перезагрузить"))

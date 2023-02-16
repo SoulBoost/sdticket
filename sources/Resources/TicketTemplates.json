@@ -1,4 +1,13 @@
 {
+  "Выберите тему обращения": {
+                                  "ticket_type": "default",
+                                  "help_info": "",
+                                  "subselection": [""],
+                                  "comment_len": 0,
+                                  "related_method": "",
+                                  "help_info2": "",
+                                  "comment_len2": 0
+  },
   "Выдать/заменить оборудование": {
                                   "ticket_type": 1,
                                   "help_info": "Выберите нужное оборудование",

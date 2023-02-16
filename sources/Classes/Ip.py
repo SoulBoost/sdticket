@@ -7,10 +7,12 @@
     self.ip: str типа 'xxx.xxx.xxx.xxx'
     self.pc_name: str типа "DESCTOP-xxxxx"
     self.dealership: str определяется по имени компьютера
-    self.subnet: str определяется по IP. Сейчас не используется
+    self.subnet: str определяется по IP. Сейчас не используется. Определяет по IP подсеть пользователя. Зачем?
 """
 
 import socket
+import time
+import uptime
 
 from Global.globals import SUBNETS, PC_NAMES
 
@@ -20,7 +22,13 @@ class Ip:
         self.ip = socket.gethostbyname(socket.getfqdn())
         self.pc_name = socket.gethostname()
         self.dealership = self.set_dealership_by_pc_name()
-        self.subnet = self.set_subnet()
+        self.worktime = self.get_worktime()
+#  время работы ПК
+    def get_worktime(self):
+        n = int(uptime.uptime())
+        if (n // 3600 ) > 24:
+            return "Необходимо перезагрузить устройство\nКомпьютер работает более 24 часов."
+        return
 
 # по префиксу в имени ПК определяет ДЦ с помощью PC_names.json
     def set_dealership_by_pc_name(self):
@@ -42,16 +50,7 @@ class Ip:
         mask = int('1' * length + '0' * (32-length), 2)
         return mask
 
-# по IP определяет подсеть пользователя
-    def set_subnet(self):
-        bin_ip = self.ip_to_bit(self.ip)  # ip в формате десятичного числа
 
-        for subnet in SUBNETS.keys():
-            bin_mask = self.get_bin_mask(subnet)  # маска в формате десятичного числа
-            user_subnet = bin_mask & bin_ip
-
-            if user_subnet == self.ip_to_bit(subnet.split('/')[0]):
-                return subnet
 
 # опереляет ДЦ по подсети с помощью Subnets.json
     def set_dealership(self):
@@ -77,4 +76,5 @@ class Ip:
 
 if __name__ == '__main__':
     user_ip = Ip()
-    print(user_ip.get_dealership(), user_ip.get_subnet(), user_ip.get_ip(), user_ip.get_pc_name())
+    # print()
+    # print(user_ip.get_dealership(), user_ip.get_subnet(), user_ip.get_ip(), user_ip.get_pc_name(), user_ip.get_worktime())

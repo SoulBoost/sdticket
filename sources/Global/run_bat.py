@@ -48,10 +48,5 @@ if __name__ == '__main__':
     path_B = r"B:\\"
     PATH_TEMP_CLEAN = r"..\Resources\Temp_Clean.cmd"
     PATH_CACHE_CLEANING = r"..\Resources\Cache_Cleaning.bat"
-
-    #print(run_bat((PATH_TEMP_CLEAN)))
-    #print(run_bat_out((PATH_TEMP_CLEAN)))
-
-    print(run_bat(['powershell.exe', '../Resources/test.ps1']))
     print(run_bat_out(path_B_bat))
     print(path_existance(path_B))

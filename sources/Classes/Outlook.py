@@ -46,7 +46,7 @@ class Outlook:
                f'\n\n{self.comment}' \
                f'\n\n Пилот'
         return body
-
+# формирует сообщение после запуска приложения outlook
     def send_message(self):
         outlook = win32.Dispatch('outlook.application')
         mail = outlook.CreateItem(0)
@@ -54,7 +54,6 @@ class Outlook:
         mail.Subject = self.subject
         mail.Body = self.body
         mail.Importance = 2
-        # mail.HTMLBody = '<h2>HTML Message body</h2>' #this field is optional
 
         if self.image:
             attachment = os.path.join(os.getcwd(), self.image)

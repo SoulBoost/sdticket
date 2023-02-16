@@ -14,8 +14,11 @@ Singleton класс, который одержит информацию о по
 """
 
 import os
+import uptime
+import socket
 
 from Classes.Ip import Ip
+from Global.globals import SUBNETS, PC_NAMES
 
 
 class User:
@@ -29,11 +32,13 @@ class User:
 
     def __init__(self, ip: Ip):
         self.ip_cl = ip
-        self.pc_name = ip.get_pc_name()
         self.login = os.environ.get("USERNAME")
         self.ip = ip.get_ip()
-        self.dealership = ip.get_dealership()
-        # self.worktime = get_worktime()
+
+        self.worktime = self.get_worktime()
+        self.pc_name = socket.gethostname()
+        self.dealership = self.set_dealership_by_pc_name()
+        self.ip = socket.gethostbyname(socket.getfqdn())
 
     def set_auto_dealership(self):
         self.dealership = self.ip_cl.get_dealership()
@@ -62,20 +67,25 @@ class User:
     def get_ip(self):
         return self.ip
 
+    # время работы ПК
     def get_worktime(self):
-        return self.worktime
+        n = int(uptime.uptime())
+        if (n // 3600) > 24:
+            return "Необходимо перезагрузить устройство\nКомпьютер работает более 24 часов."
+        return
+
+    # название ПК
+    def get_pc_name(self):
+        return self.pc_name
+
+    # по префиксу в имени ПК определяет ДЦ с помощью PC_names.json
+    def set_dealership_by_pc_name(self):
+        for prefix in PC_NAMES.keys():
+            if prefix in self.pc_name:
+                return PC_NAMES[prefix]
+            return "не определено"
 
 
 if __name__ == '__main__':
     ip = Ip()
     user = User.new(ip)
-    user.set_dealership('Центр')
-    print(user.get_pc_name(), user.get_login(), user.get_ip(), user.get_dealership())
-    print(user)
-
-    ip.ip = '10.50.7.169'
-    ip.subnet = ip.set_subnet()
-    ip.dealership = ip.set_dealership()
-    user2 = User.new(ip)
-    print(user2.get_pc_name(), user2.get_login(), user2.get_ip(), user2.get_dealership())
-    print(user2)
