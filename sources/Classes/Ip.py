@@ -11,8 +11,7 @@
 """
 
 import socket
-import time
-import uptime
+
 
 from Global.globals import SUBNETS, PC_NAMES
 
@@ -22,13 +21,6 @@ class Ip:
         self.ip = socket.gethostbyname(socket.getfqdn())
         self.pc_name = socket.gethostname()
         self.dealership = self.set_dealership_by_pc_name()
-        self.worktime = self.get_worktime()
-#  время работы ПК
-    def get_worktime(self):
-        n = int(uptime.uptime())
-        if (n // 3600 ) > 24:
-            return "Необходимо перезагрузить устройство\nКомпьютер работает более 24 часов."
-        return
 
 # по префиксу в имени ПК определяет ДЦ с помощью PC_names.json
     def set_dealership_by_pc_name(self):
@@ -50,22 +42,8 @@ class Ip:
         mask = int('1' * length + '0' * (32-length), 2)
         return mask
 
-
-
-# опереляет ДЦ по подсети с помощью Subnets.json
-    def set_dealership(self):
-        if not self.subnet:
-            return None
-        dealership = SUBNETS[self.subnet]
-        if dealership[0] == '*' or dealership == 'не определена':
-            return None
-        return dealership
-
     def get_ip(self):
         return self.ip
-
-    def get_subnet(self):
-        return self.subnet
 
     def get_dealership(self):
         return self.dealership
@@ -76,5 +54,3 @@ class Ip:
 
 if __name__ == '__main__':
     user_ip = Ip()
-    # print()
-    # print(user_ip.get_dealership(), user_ip.get_subnet(), user_ip.get_ip(), user_ip.get_pc_name(), user_ip.get_worktime())

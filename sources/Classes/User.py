@@ -31,12 +31,13 @@ class User:
         return User.__object
 
     def __init__(self, ip: Ip):
+        self.pc_name = socket.gethostname()
         self.ip_cl = ip
         self.login = os.environ.get("USERNAME")
         self.ip = ip.get_ip()
 
         self.worktime = self.get_worktime()
-        self.pc_name = socket.gethostname()
+
         self.dealership = self.set_dealership_by_pc_name()
         self.ip = socket.gethostbyname(socket.getfqdn())
 
