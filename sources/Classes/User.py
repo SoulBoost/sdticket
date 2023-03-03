@@ -17,7 +17,7 @@ import os
 import uptime
 import socket
 
-from Classes.Ip import Ip
+# from Classes.Ip import Ip
 from Global.globals import SUBNETS, PC_NAMES
 
 
@@ -26,11 +26,11 @@ class User:
 
     @staticmethod
     def new(ip):
-        if User.__object == None:
+        if User.__object is None:
             User.__object = User(ip)
         return User.__object
 
-    def __init__(self, ip: Ip):
+    def __init__(self, ip):
         self.pc_name = socket.gethostname()
         self.ip_cl = ip
         self.login = os.environ.get("USERNAME")
@@ -88,5 +88,6 @@ class User:
 
 
 if __name__ == '__main__':
-    ip = Ip()
+    ip = User
+    # user_ip = User()
     user = User.new(ip)
