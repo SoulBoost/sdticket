@@ -89,5 +89,5 @@ class User:
 
 if __name__ == '__main__':
     ip = User
-    # user_ip = User()
+    # user_ip = User() #
     user = User.new(ip)
